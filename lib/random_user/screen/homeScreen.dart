@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.all(15),
                         child: ClipOval(child: Image.network("${user.results![0].picture!.large}",height: 200,width: 200,fit: BoxFit.fill,),),
                       ),
-                      Text("data")
+                      Text("${user.info!.version}")
 
                     ],
                   ),
