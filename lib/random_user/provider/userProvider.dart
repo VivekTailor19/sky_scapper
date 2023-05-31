@@ -6,7 +6,7 @@ import 'package:sky_scapper/random_user/model/userModel.dart';
 
 class UserProvider extends ChangeNotifier
 {
-  UserModel? usermodel;
+  UserModel usermodel = UserModel();
 
   Future<UserModel> userDataLoad()
   async {

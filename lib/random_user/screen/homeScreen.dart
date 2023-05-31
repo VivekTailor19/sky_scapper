@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   UserProvider? userT;
   UserProvider? userF;
+
   @override
   Widget build(BuildContext context) {
 
@@ -41,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         body: FutureBuilder(
           future: userF!.userDataLoad(),
+
           builder: (context, snapshot) {
 
             if(snapshot.hasError)
@@ -63,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(width: 10,),
                             Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("${user.results![0].name!.title}. ${user.results![0].name!.first} ${user.results![0].name!.last}",style: TextStyle(fontSize: 16.sp),),
+                                Text("${user.results![0].name!.title}. ${user.results![0].name!.first} ${user.results![0].name!.last}",style: TextStyle(fontSize: 16.sp),textAlign: TextAlign.right,maxLines:2,overflow: TextOverflow.ellipsis),
                                 Text("${user.results![0].gender}".toUpperCase()),
                               ],
                             ),
@@ -102,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text("$title :",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15),),
-          Text("$data",style: TextStyle(fontWeight: FontWeight.w300,),),
+          Text("$data",style: TextStyle(fontWeight: FontWeight.w300,),textAlign: TextAlign.right,maxLines:2,overflow: TextOverflow.ellipsis),
         ],
       ),
     );
