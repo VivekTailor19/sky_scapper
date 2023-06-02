@@ -6,14 +6,14 @@ import 'package:sky_scapper/random_user/provider/userProvider.dart';
 
 
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class RandomUser extends StatefulWidget {
+  const RandomUser({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<RandomUser> createState() => _RandomUserState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _RandomUserState extends State<RandomUser> {
 
   UserProvider? userT;
   UserProvider? userF;

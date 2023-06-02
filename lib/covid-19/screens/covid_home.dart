@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sky_scapper/covid-19/model/covid_model.dart';
@@ -10,6 +11,7 @@ class Covid_HomeScreen extends StatefulWidget {
   State<Covid_HomeScreen> createState() => _Covid_HomeScreenState();
 }
 
+
 class _Covid_HomeScreenState extends State<Covid_HomeScreen> {
 
   CovidProvider? covidT;
@@ -18,7 +20,6 @@ class _Covid_HomeScreenState extends State<Covid_HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-
     covidT = Provider.of<CovidProvider>(context);
     covidF = Provider.of<CovidProvider>(context,listen: false);
 
@@ -26,10 +27,13 @@ class _Covid_HomeScreenState extends State<Covid_HomeScreen> {
       body: FutureBuilder(
         future: covidF!.getCovidData(),
         builder: (context, snapshot) {
+
           if(snapshot.hasError)
             {
               return Center(child: Text("${snapshot.error}"),);
             }
+
+
           else if(snapshot.hasData)
             {
               List<CoronaModel> covidData = snapshot.data!;
@@ -58,7 +62,10 @@ class _Covid_HomeScreenState extends State<Covid_HomeScreen> {
               );
             }
 
+
           return Center(child: CircularProgressIndicator(),);
+
+
         },
 
 
