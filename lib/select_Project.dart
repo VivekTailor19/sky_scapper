@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class Projects extends StatefulWidget {
   const Projects({Key? key}) : super(key: key);
@@ -13,18 +14,20 @@ class _ProjectsState extends State<Projects> {
     return SafeArea(
       child: Scaffold(
 
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            TextButton(onPressed: () {
-              Navigator.pushNamed(context, "random");
-            }, child:Text("Random User")),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(onPressed: () {
+                Navigator.pushNamed(context, "random");
+              }, child:Text("Random User",style: TextStyle(fontSize: 20.sp),)),
 
-            TextButton(onPressed: () {
-              Navigator.pushNamed(context, "covid");
-            }, child:Text("Covid-19")),
+              TextButton(onPressed: () {
+                Navigator.pushNamed(context, "covid");
+              }, child:Text("Covid-19",style: TextStyle(fontSize: 20.sp),)),
 
-          ],
+            ],
+          ),
         ),
       ),
     );

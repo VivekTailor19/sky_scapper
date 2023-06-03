@@ -33,18 +33,25 @@ class _RandomUserState extends State<RandomUser> {
     userF = Provider.of<UserProvider>(context,listen: false);
 
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(elevation: 0,
+      child: Scaffold(backgroundColor: Colors.white,
+        floatingActionButton: FloatingActionButton(
 
-         backgroundColor: Colors.white,
+          backgroundColor: Color(0xff263238),
+          onPressed: () async{
+            userF!.userDataLoad();
+          },
+          child: Icon(Icons.refresh_rounded,color: Colors.white,),
 
-            flexibleSpace: Container(
-              height: 50,color: Colors.white,
-                child: ElevatedButton(onPressed: () async {
-                  userF!.userDataLoad();
-                },
-                    child: Text("Generate User",style: TextStyle(fontSize: 18,color: Colors.white),)),
-              ),
+        ),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(icon:Icon(Icons.arrow_back_ios_new_rounded),
+            color: Color(0xff263238),iconSize: 25,
+              onPressed: () {
+                 Navigator.pop(context);
+              },
+           ),
        ),
 
         body: userT!.usermodel == null ? 
