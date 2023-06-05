@@ -10,6 +10,7 @@ import 'package:sky_scapper/select_Project.dart';
 import 'covid-19/provider/covid_Provider.dart';
 import 'covid-19/screens/covid_first.dart';
 import 'covid-19/screens/intro_screens/splash_Screen.dart';
+import 'covid-19/screens/searchcountry.dart';
 
 void main() {
   runApp(
@@ -21,14 +22,15 @@ void main() {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: "covidfirst",
+          //initialRoute: "covidfirst",
           routes: {
             "/":(context) => Projects(),
             "random":(context) => RandomUser(),
             "covid":(context) => SplashScreen(),
             "covidpages":(context) => Intro_Pages(),
             "covidfirst":(context) => Covid_First(),
-            "covidhome":(context) => Covid_HomeScreen()
+            "covidhome":(context) => Covid_HomeScreen(),
+            "search":(context) => SearchScreen(),
           },
         ),
       ),
@@ -37,3 +39,8 @@ void main() {
 }
 
 
+
+//Remainning
+/*
+HOme screen ma article and News
+*/

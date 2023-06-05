@@ -100,3 +100,27 @@ class _Covid_FirstState extends State<Covid_First> {
     );
   }
 }
+
+
+
+// ratio of recovered = number of recovered cases per total positive coronavirus cases,
+//    Color codes  ==>>>> red === FF647C   ; teal == 00BFA6
+//
+
+/*
+ ==== Database =====
+
+      country
+      countryInfo == flag
+
+      total and today { cases  deaths  recovered}
+
+      active
+      critical
+      total tests
+      population
+
+ */
+
+
+

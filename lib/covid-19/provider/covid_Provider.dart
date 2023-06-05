@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sky_scapper/covid-19/api/covid_API.dart';
 import 'package:sky_scapper/covid-19/model/covid_model.dart';
@@ -11,6 +10,7 @@ import 'package:sky_scapper/covid-19/screens/drawer_Screens/prevention_Drawer_sc
 import 'package:sky_scapper/covid-19/screens/drawer_Screens/statistics_Drawer_screen.dart';
 import 'package:sky_scapper/covid-19/screens/drawer_Screens/symptoms_Drawer_screen.dart';
 
+import '../model/prevention_model.dart';
 import '../model/splashmodel.dart';
 
 class CovidProvider extends ChangeNotifier
@@ -23,6 +23,7 @@ class CovidProvider extends ChangeNotifier
     covidBase = await Covid_API.covid_api.getCovid_Api();
     return covidBase;
   }
+
 
   List<CoronaModel> list = [];
   List<CoronaModel> filtered = [];
@@ -91,6 +92,97 @@ class CovidProvider extends ChangeNotifier
     "News",
     "Help"
   ];
+
+  List<PreventionModel> preventions = [
+    PreventionModel(title:"Use Mask", imgpath:"assets/images/prevention/p1.png",data:"For your safety and the safety of others a mask should be worn at all times."),
+    PreventionModel(title:"Avoid Close Contact", imgpath:"assets/images/prevention/p2.png",data:"Maintain at least 1-meter (3 feet) distance between yourself and anyone who is coughing or sneezing."),
+    PreventionModel(title:"Wash Your Hand", imgpath:"assets/images/prevention/p3.png",data:"Washing your hands with soap can help reduce the risk of infection."),
+  ];
+
+
+  // Statistics Screen
+
+  // Color textIndia = Colors.white;
+  // Color tabIndia = Color(0xff3F414E);
+  //
+  // Color textGlobal = Color(0xff3F414E);
+  // Color tabGlobal = Colors.white;
+
+  Color textIndia = Color(0xff3F414E);
+  Color tabIndia = Colors.white;
+
+  Color textGlobal = Colors.white;
+  Color tabGlobal = Color(0xff3F414E);
+
+  bool isIndia = true;
+  bool isGlobal = false;
+
+
+
+  void colorChange(bool global, bool india)
+  {
+    isGlobal = global;
+    isIndia = india;
+
+    if( isGlobal ==true)
+      {
+         textIndia = Colors.white;
+         tabIndia = Color(0xff3F414E);
+         textGlobal = Color(0xff3F414E);
+         tabGlobal = Colors.white;
+      }
+    else
+      {
+        textIndia = Color(0xff3F414E);
+        tabIndia = Colors.white;
+        textGlobal = Colors.white;
+        tabGlobal =Color(0xff3F414E);
+      }
+
+    notifyListeners();
+  }
+
+
+  int globalcases = 1;
+  int globalrecover = 1;
+  double globalratio = 1;
+  void findGlobalCovidData()
+  {
+    int tempCase = 0;
+    int tempRecover = 0;
+
+    for(int i = 0 ; i< covidBase.length ; i++)
+      {
+        tempCase = tempCase + covidBase[i].cases!;
+        tempRecover = tempRecover + covidBase[i].recovered!;
+
+      }
+
+    globalcases = tempCase;
+    globalrecover = tempRecover;
+    globalratio = globalrecover / globalcases;
+    print("recover = $globalratio");
+    notifyListeners();
+  }
+
+
+  int indiaindex = 0;
+  void findIndia()
+  {
+    for(int i = 0 ; i< covidBase.length ; i++)
+    {
+      if(covidBase[i].country == "India")
+        {
+          indiaindex = i;
+          print(" India == $indiaindex");
+        }
+      notifyListeners();
+
+    }
+
+  }
+
+
 
 
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../provider/covid_Provider.dart';
 
 class Drawer_HomeScreen extends StatefulWidget {
   const Drawer_HomeScreen({Key? key}) : super(key: key);
@@ -9,8 +12,17 @@ class Drawer_HomeScreen extends StatefulWidget {
 }
 
 class _Drawer_HomeScreenState extends State<Drawer_HomeScreen> {
+
+  CovidProvider? covidT;
+  CovidProvider? covidF;
+
   @override
   Widget build(BuildContext context) {
+
+    covidT = Provider.of<CovidProvider>(context);
+    covidF = Provider.of<CovidProvider>(context,listen: false);
+
+
     return Column(
       children: [
         Container(
@@ -71,8 +83,39 @@ class _Drawer_HomeScreenState extends State<Drawer_HomeScreen> {
           ),
         ),
         HomeTabs("Prevention"),
-        HomeTabs("Article"),
-        HomeTabs("News"),
+        Container(height: 41.w,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+
+            itemCount: covidF!.preventions.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.only(right: 4.w),
+                child: Container(
+                  height: 40.w,width: 37.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(3.w),
+                    color: Colors.white
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(2.w),
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(alignment: Alignment.center,height: 19.w,
+                            child: Image.asset("${covidT!.preventions[index].imgpath}",height: 18.w,)),
+                        Text("${covidT!.preventions[index].title}",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 12.sp,),textAlign: TextAlign.center,maxLines: 2,),
+                        Spacer(),
+                        Text("${covidT!.preventions[index].data}",style: TextStyle(fontWeight: FontWeight.w200,fontSize: 10.sp),maxLines: 2,overflow: TextOverflow.ellipsis),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        // HomeTabs("Article"),
+        // HomeTabs("News"),
 
 
       ],

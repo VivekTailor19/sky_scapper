@@ -32,17 +32,3 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-
-
-/*
-country
-countryInfo == flag
-
-total and today { cases  deaths  recovered}
-
-active
-critical
-total tests
-population
-
-*/
